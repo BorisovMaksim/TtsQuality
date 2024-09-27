@@ -13,9 +13,9 @@ This repo  is about quality assessment of a recent tts engine `jenny` that is fi
 The datasets of interest are: 
 
 1. Librispeech (test-clean)
-    - Diverse content from audiobooks with clean audios
+    - Diverse content from audiobooks with clean transcriptions
 2. Librispeech (test-other)
-    - Diverse content from audiobooks with noisy audios
+    - Diverse content from audiobooks with noisy transcriptions
 3. Jenny
     - Extracted 1000 wavs from training set for testing SIM-o purposes
 
@@ -63,12 +63,12 @@ For the following sections the text descriptions is `Default`
 ### Dataset `jenny`
 |               | WER      |   CER    | SIM-o  | FSD     |   MCD    |
 | :-----------: | :------: | :-------:| :----: |   :---: | :---:    |
-| ground truth  |  0.1333  |   0.0430 | 0.9698 |  0.0515 |    0.00  |
-| jenny TTS     |  0.0000  |   0.0000 | 0.9566 |  0.1858 |   14.71  |
+| ground truth  |  0.1360  |   0.0346 | 0.9326 |  0.0515 |    0.00  |
+| jenny TTS     |  0.1858  |   0.0908 | 0.9665 |  0.1858 |   14.71  |
 
-The `jenny TTS` models intelligibility on training set is better than the intelligibility of the original speaker. Additionally, I've listend to couple of wavs, the original speaker misspells words sometimes.
+The `jenny TTS` models intelligibility on training set is slightly worse than the intelligibility of the original speaker. To double check, I've listend to couple of wavs, the original speaker misspells words sometimes.
 
- The   `ground truth` SIM-o is measured as mean similarity between halfs of speech recordings. The `jenny TTS` has high SIM-o score, just below the `ground truth` score, so the similarity to the original speaker is high
+ The   `ground truth` SIM-o is measured as mean similarity between halfs of speech recordings. The `jenny TTS` has high SIM-o score, comparable to the `ground truth` score, so the similarity to the original speaker is high
 
  However, there is still a gap between real distribution and synthesized distribution accroding to FSD, and the MCD score is quite high
 
@@ -77,20 +77,20 @@ The `jenny TTS` models intelligibility on training set is better than the intell
 
 |               | WER      |   CER    | SIM-o  | FSD     |   MCD    |
 | :-----------: | :------: | :-------:| :----: |   :---: | :---:    |
-| ground truth  |  0.0556  |   0.0233 | 0.9478 |  0.0391 |    0.00  |
-| jenny TTS     |  0.1111  |   0.0698 | 0.4260 |  4.6197 |   16.79  |
+| ground truth  |  0.0231  |   0.0062 | 0.933  |  0.0391 |    0.00  |
+| jenny TTS     |  0.3413  |   0.2057 | 0.6452 |  4.6197 |   16.79  |
 
-We see that `jenny TTS` has twice as much WER as `ground truth`, at around 11%. So, the intelligibility definetly has a room to imporve.  The SIM-o score is quite low at 0.4260, also the FSD is quite high, which is totally normal, since  `jenny TTS` is the single speaker tts. The prosody score for `librispeech-test-clean` is lower than for `jenny` dataset, since the model tries to mimic prosody of `jenny`.
+We see that `jenny TTS` has much worse WER than `ground truth`, at around 34%. So, the intelligibility definetly has a room to imporve.  The SIM-o score is quite low at  0.6452, also the FSD is quite high, which is totally normal, since  `jenny TTS` is the single speaker tts. The prosody score for `librispeech-test-clean` is lower than for `jenny` dataset, since the model tries to mimic prosody of `jenny`.
 
 
 ### Dataset `librispeech-test-other`
 
 |               | WER      |   CER    | SIM-o  | FSD     |   MCD    |
 | :-----------: | :------: | :-------:| :----: |   :---: | :---:    |
-| ground truth  |  0.0455  |   0.0092 | 0.9745 |  0.0334 |    0.00  |
-| jenny TTS     |  0.5     |   0.3853 | 0.9194 |  2.2128 |   15.59  |
+| ground truth  |  0.0468  |  0.0151  | 0.9300 |  0.0334 |    0.00  |
+| jenny TTS     |  0.3503  |   0.2084 | 0.6512 |  2.2128 |   15.59  |
 
-The other subset consists of more challenging texts for model to synthesize. The intelligibility degrades drastically, the error occurs in 50% of words. The similarity scores for such generation are unreasonably high. I think that the speaker verification model is not robust for such tts outputs. The FSD and MCD score on `librispeech-test-other` dataset are still lower compared to scores on `jenny` dataset.
+The other subset consists of more challenging texts for model to synthesize. Interestingly, the intelligibility stays the same compared to the `librispeech-test-clean` dataset, the error occurs in 35% of words. The similarity scores for such generation are also the same. The FSD and MCD scores on `librispeech-test-other` dataset are still lower compared to scores on `jenny` dataset.
 
 ### Descriptions
 
@@ -98,14 +98,14 @@ The scores are computed on `librispeech-test-clean` dataset
 
 |                               | WER      |   CER    | SIM-o  | FSD     |   MCD    |
 | :-----------:                 | :------: | :-------:| :----: |   :---: | :---:    |
-| ground truth                  |  0.0556  |   0.0233 | 0.9478 |  0.0391 |    0.00  |
-| jenny TTS                     |  0.1111  |   0.0698 | 0.4260 |  4.6197 |   16.79  |
-| jenny TTS + `Enthusiastic`    |  0.1667  |   0.1395 | 0.4546 |  0.938  |   17.76  |
-| jenny TTS  + `Dramatic`       |  0.1111  |   0.0698 | 0.4024 |  4.911  |   16.98  |
+| ground truth                  |  0.0231  |   0.0062 | 0.933  |  0.0391 |    0.00  |
+| jenny TTS                     |  0.3413  |   0.2057 | 0.6452 |  4.6197 |   16.79  |
+| jenny TTS + `Enthusiastic`    |  0.1509  |   0.0886 | 0.6490 |  0.938  |   17.76  |
+| jenny TTS  + `Dramatic`       |  0.3542  |   0.2169 | 0.6389 |  4.911  |   16.98  |
 
 
-Subjectivaely, I don't hear a lot of change in emotion. Overal, the scores indicate that the models with `Enthusiastic` and `Dramatic` descriptions perform worse. The exception is FSD score that is better for some reason 
+Subjectivaely, I don't hear a lot of change in emotion. Interestingly, the scores indicate that the model with `Enthusiastic` description performs better in terms of intelligibility, quality and diversity. 
 
 ## Conclusion 
 
-Overall, the `jenny TTS` model copies the real `jenny` voice resonably well according to the SIM-o scores. The quality and diversity of generated samples can be improved. Also, it struggles on out of training texts, the itelligibility in such scenarios can be up to 50% WER on hard cases. The MCD scores indicate that generated prosody is not close to the real prosody. The model ability to change emotion based on text description seems low, but maybe the further investigation in other text descriptions is needed. 
+Overall, the `jenny TTS` model copies the real `jenny` voice resonably well according to the SIM-o scores. The quality and diversity of generated samples can be improved. Also, it struggles on out of training texts, the itelligibility in such scenarios can be up to 35% WER on hard cases. The MCD scores indicate that generated prosody is not close to the real prosody. The model ability to change emotion based on text description seems low, but the `Enthusiastic` description substentially imporves model intelligibility, quality and diversity. 
