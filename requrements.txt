@@ -1,0 +1,5 @@
+git+https://github.com/huggingface/parler-tts.git
+datasets==3.0.0
+jiwer==3.0.4
+pymcd==0.2.1
+fadtk==1.0.1
