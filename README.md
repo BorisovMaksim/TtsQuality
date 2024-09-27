@@ -105,6 +105,7 @@ The scores are computed on `librispeech-test-clean` dataset
 
 
 Subjectivaely, I don't hear a lot of change in emotion. Interestingly, the scores indicate that the model with `Enthusiastic` description performs better in terms of intelligibility, quality and diversity. 
+There is a problem that `jenny TTS` sometimes generetes only part of the sentence. Maybe the `Enthusiastic` description allows model to generate full sentences more frequently.
 
 ## Conclusion 
 
