@@ -101,7 +101,7 @@ The scores are computed on `librispeech-test-clean` dataset
 | ground truth                  |  0.0556  |   0.0233 | 0.9478 |  0.0391 |    0.00  |
 | jenny TTS                     |  0.1111  |   0.0698 | 0.4260 |  4.6197 |   16.79  |
 | jenny TTS + `Enthusiastic`    |  0.1667  |   0.1395 | 0.4546 |  0.938  |   17.76  |
-| jenny TTS  + `Dramatic`       |  0.1667  |   0.1395 | 0.4546 |  0.938  |   17.76  |
+| jenny TTS  + `Dramatic`       |  0.1111  |   0.0698 | 0.4024 |  4.911  |   16.98  |
 
 
 Subjectivaely, I don't hear a lot of change in emotion. Overal, the scores indicate that the models with `Enthusiastic` and `Dramatic` descriptions perform worse. The exception is FSD score that is better for some reason 
