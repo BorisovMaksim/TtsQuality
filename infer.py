@@ -225,7 +225,7 @@ def main(device, description, dataset_name, save_dir):
             for k, v in metrics.items():
                 res[k] += [v]
 
-    for k, v in metrics.items():
+    for k, v in res.items():
         res[k] = np.mean(v)
 
     score, gt_score = computer.compute_fad(saved_paths, saved_gt_paths)
